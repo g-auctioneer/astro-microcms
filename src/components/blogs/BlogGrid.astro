@@ -1,0 +1,19 @@
+---
+import type { MicroCMSListResponse } from "microcms-js-sdk";
+import { getBlogs } from "@lib/microcms";
+import type { Blog } from "@lib/microcms.d";
+
+const blogs: MicroCMSListResponse<Blog> = await getBlogs();
+---
+
+<ul>
+  {
+    blogs.contents.map((content: Blog) => (
+      <li>
+        <a href={content.id}>
+          <img src={content.eyecatch.url} />
+        </a>
+      </li>
+    ))
+  }
+</ul>
